@@ -1,6 +1,5 @@
 package introcourse.level04
 
-import introcourse.level04.NullExercises._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -13,15 +12,15 @@ class NullExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should return Red") {
-      assert(mkTrafficLightOrNull("red") === Red)
+      assert(mkTrafficLightOrNull("red") === TrafficLight.Red)
     }
 
     it("should return Yellow") {
-      assert(mkTrafficLightOrNull("yellow") === Yellow)
+      assert(mkTrafficLightOrNull("yellow") === TrafficLight.Yellow)
     }
 
     it("should return Green") {
-      assert(mkTrafficLightOrNull("green") === Green)
+      assert(mkTrafficLightOrNull("green") === TrafficLight.Green)
     }
 
   }
@@ -33,7 +32,9 @@ class NullExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should show Yellow traffic light") {
-      assert(mkTrafficLightOrNullThenShow("yellow") === "Traffic light is yellow")
+      assert(
+        mkTrafficLightOrNullThenShow("yellow") === "Traffic light is yellow"
+      )
     }
 
     it("should show Green traffic light") {
@@ -65,7 +66,12 @@ class NullExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("mkPersonOrNullThenChangeName") {
 
     it("should return Person with name set to newName") {
-      assert(mkPersonOrNullThenChangeName("Old Name", 20, "New Name") === Person("New Name", 20))
+      assert(
+        mkPersonOrNullThenChangeName("Old Name", 20, "New Name") === Person(
+          "New Name",
+          20
+        )
+      )
     }
 
     it("should return null if oldName is blank") {

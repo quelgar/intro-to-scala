@@ -1,6 +1,5 @@
 package introcourse.level03
 
-import introcourse.level03.ListExercises._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -97,7 +96,9 @@ class ListExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(youngestPerson(Nil) === Person("Nobody", 0))
     }
 
-    it("should return the first person in the list with the smallest age given a non-empty List") {
+    it(
+      "should return the first person in the list with the smallest age given a non-empty List"
+    ) {
       val youngest = Person("Karen Page", 27)
 
       assert(youngestPerson(peopleList) === youngest)
@@ -108,13 +109,17 @@ class ListExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("personWithIndex") {
 
     it("should return each person with their 1-based index") {
-      assert(personWithIndex(peopleList) === (
-        List((Person("Matt Murdock",            30), 1),
-             (Person("Karen Page",              27), 2),
-             (Person("Franklin 'Foggy' Nelson", 31), 3),
-             (Person("Claire Temple",           32), 4),
-             (Person("Wilson Fisk",             42), 5),
-             (Person("Elektra Natchios",        27), 6)))
+      assert(
+        personWithIndex(peopleList) === (
+          List(
+            (Person("Matt Murdock", 30), 1),
+            (Person("Karen Page", 27), 2),
+            (Person("Franklin 'Foggy' Nelson", 31), 3),
+            (Person("Claire Temple", 32), 4),
+            (Person("Wilson Fisk", 42), 5),
+            (Person("Elektra Natchios", 27), 6)
+          )
+        )
       )
     }
   }
@@ -122,24 +127,46 @@ class ListExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("showEveryNthPerson") {
 
     it("should show every Nth person") {
-      val people = ListExercises.peopleList
-      val all = people.map(showPerson)
+      val all = peopleList.map(showPerson)
 
-      assert(showEveryNthPerson(-5, people) === all)
-      assert(showEveryNthPerson(0, people)  === all)
-      assert(showEveryNthPerson(1, people)  === all)
-      assert(showEveryNthPerson(2, people)  === List("Karen Page is 27 years old", "Claire Temple is 32 years old", "Elektra Natchios is 27 years old"))
-      assert(showEveryNthPerson(3, people)  === List("Franklin 'Foggy' Nelson is 31 years old", "Elektra Natchios is 27 years old"))
-      assert(showEveryNthPerson(5, people)  === List("Wilson Fisk is 42 years old"))
-      assert(showEveryNthPerson(6, people)  === List("Elektra Natchios is 27 years old"))
-      assert(showEveryNthPerson(8, people)  === Nil)
+      assert(showEveryNthPerson(-5, peopleList) === all)
+      assert(showEveryNthPerson(0, peopleList) === all)
+      assert(showEveryNthPerson(1, peopleList) === all)
+      assert(
+        showEveryNthPerson(2, peopleList) === List(
+          "Karen Page is 27 years old",
+          "Claire Temple is 32 years old",
+          "Elektra Natchios is 27 years old"
+        )
+      )
+      assert(
+        showEveryNthPerson(3, peopleList) === List(
+          "Franklin 'Foggy' Nelson is 31 years old",
+          "Elektra Natchios is 27 years old"
+        )
+      )
+      assert(
+        showEveryNthPerson(5, peopleList) === List(
+          "Wilson Fisk is 42 years old"
+        )
+      )
+      assert(
+        showEveryNthPerson(6, peopleList) === List(
+          "Elektra Natchios is 27 years old"
+        )
+      )
+      assert(showEveryNthPerson(8, peopleList) === Nil)
     }
   }
 
   describe("getNames") {
 
     it("should return the names of all persons") {
-      val powerRangers = List(Person("Red Ranger", 22), Person("Yellow Ranger", 20), Person("Pink Ranger", 21))
+      val powerRangers = List(
+        Person("Red Ranger", 22),
+        Person("Yellow Ranger", 20),
+        Person("Pink Ranger", 21)
+      )
       val names = getNames(powerRangers)
       assert(names === List("Red Ranger", "Yellow Ranger", "Pink Ranger"))
     }
@@ -149,9 +176,15 @@ class ListExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("getAdults") {
 
     it("should return persons aged >= 18") {
-      val powerRangers = List(Person("Red Ranger", 17), Person("Yellow Ranger", 18), Person("Pink Ranger", 19))
+      val powerRangers = List(
+        Person("Red Ranger", 17),
+        Person("Yellow Ranger", 18),
+        Person("Pink Ranger", 19)
+      )
       val adults = getAdults(powerRangers)
-      assert(adults === List(Person("Yellow Ranger", 18), Person("Pink Ranger", 19)))
+      assert(
+        adults === List(Person("Yellow Ranger", 18), Person("Pink Ranger", 19))
+      )
     }
 
   }
@@ -169,9 +202,33 @@ class ListExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("sublists") {
 
     it("should pack consecutive duplicates of list elements into sublists") {
-      val inputList = List("a", "a", "a", "a", "b", "c", "c", "a", "a", "d", "e", "e", "e", "e")
+      val inputList = List(
+        "a",
+        "a",
+        "a",
+        "a",
+        "b",
+        "c",
+        "c",
+        "a",
+        "a",
+        "d",
+        "e",
+        "e",
+        "e",
+        "e"
+      )
       val result = sublists(inputList)
-      assert(result === List(List("a", "a", "a", "a"), List("b"), List("c", "c"), List("a", "a"), List("d"), List("e", "e", "e", "e")))
+      assert(
+        result === List(
+          List("a", "a", "a", "a"),
+          List("b"),
+          List("c", "c"),
+          List("a", "a"),
+          List("d"),
+          List("e", "e", "e", "e")
+        )
+      )
     }
 
   }

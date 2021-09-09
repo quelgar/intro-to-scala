@@ -1,7 +1,5 @@
 package introcourse.level04
 
-import introcourse.level04.OptionExercises2.Job
-import introcourse.level04.OptionExercises3._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -33,16 +31,23 @@ class OptionExercises3Test extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(findJobByHumanIdUsingFor(1) === None) // Sally
     }
 
-    it("should return None if humanId is found and Human has a job that is not in jobsDatabase") {
+    it(
+      "should return None if humanId is found and Human has a job that is not in jobsDatabase"
+    ) {
       assert(findJobByHumanIdUsingFor(3) === None) // Timmy
     }
 
-    it("should return jobId if humanId is found and Human has a job that is in jobsDatabase") {
-      assert(findJobByHumanIdUsingFor(2) === Some(Job("Teacher", "Expert in their field"))) // Jenny
+    it(
+      "should return jobId if humanId is found and Human has a job that is in jobsDatabase"
+    ) {
+      assert(
+        findJobByHumanIdUsingFor(2) === Some(
+          Job("Teacher", "Expert in their field")
+        )
+      ) // Jenny
     }
 
   }
-
 
   describe("findJobNameByHumanIdUsingFor") {
 

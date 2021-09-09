@@ -1,12 +1,12 @@
 package introcourse.level07
 
-import introcourse.level07.LogParser._
+import introcourse.level07.LogParser.*
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
 class LogParserTest extends AnyFunSpec with TypeCheckedTripleEquals {
   // TODO: Remove this import once you've defined the ADTs in LogParser
-  import Types._
+  import Types.*
 
   describe("parseIntOption") {
     it("should return the parsed integer for a valid integer") {
@@ -48,8 +48,13 @@ class LogParserTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
     it("should return a List of LogMessage") {
       val logMessages = parseLogFile("I,147,mice in the air\nX blblbaaaaa")
-      assert(logMessages ===
-        List(KnownLog(Info, 147, "mice in the air"), UnknownLog("X blblbaaaaa")))
+      assert(
+        logMessages ===
+          List(
+            KnownLog(Info, 147, "mice in the air"),
+            UnknownLog("X blblbaaaaa")
+          )
+      )
     }
 
     it("should return an empty List") {
@@ -67,7 +72,10 @@ class LogParserTest extends AnyFunSpec with TypeCheckedTripleEquals {
       val unknown1 = UnknownLog("X blblbaaaaa")
       val unknown2 = UnknownLog("W foo")
 
-      val errorsOnly = getErrorsOverSeverity(List(errorLogUnderSeverity, errorLogOverSeverity, unknown1, unknown2), 2)
+      val errorsOnly = getErrorsOverSeverity(
+        List(errorLogUnderSeverity, errorLogOverSeverity, unknown1, unknown2),
+        2
+      )
 
       assert(errorsOnly === List(errorLogOverSeverity))
     }
@@ -104,7 +112,9 @@ class LogParserTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
   describe("showErrorsOverSeverity") {
 
-    it("should show all errors over a given severity level in a readable format") {
+    it(
+      "should show all errors over a given severity level in a readable format"
+    ) {
       val logFile =
         """|I,147,mice in the air
            |W,149,could've been bad
@@ -115,7 +125,12 @@ class LogParserTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
       val errorsOverLevel4 = showErrorsOverSeverity(logFile, 4)
 
-      assert(errorsOverLevel4 === List("Error 5 (158) some strange error", "Error 6 (170) another error"))
+      assert(
+        errorsOverLevel4 === List(
+          "Error 5 (158) some strange error",
+          "Error 6 (170) another error"
+        )
+      )
     }
 
   }

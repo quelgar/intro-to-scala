@@ -1,6 +1,5 @@
 package introcourse.level04
 
-import introcourse.level04.OptionExercises2._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -27,7 +26,9 @@ class OptionExercises2Test extends AnyFunSpec with TypeCheckedTripleEquals {
 
     it("should return Job with jobId") {
       assert(findJobById(1) === Some(Job("Teacher", "Expert in their field")))
-      assert(findJobById(2) === Some(Job("Engineer", "Build things for people")))
+      assert(
+        findJobById(2) === Some(Job("Engineer", "Build things for people"))
+      )
     }
 
   }
@@ -40,7 +41,9 @@ class OptionExercises2Test extends AnyFunSpec with TypeCheckedTripleEquals {
 
     it("should return description for Job with jobId") {
       assert(findJobDescriptionGivenJobId1(1) === Some("Expert in their field"))
-      assert(findJobDescriptionGivenJobId1(2) === Some("Build things for people"))
+      assert(
+        findJobDescriptionGivenJobId1(2) === Some("Build things for people")
+      )
     }
 
   }
@@ -53,33 +56,51 @@ class OptionExercises2Test extends AnyFunSpec with TypeCheckedTripleEquals {
 
     it("should return description for Job with jobId") {
       assert(findJobDescriptionGivenJobId2(1) === Some("Expert in their field"))
-      assert(findJobDescriptionGivenJobId2(2) === Some("Build things for people"))
+      assert(
+        findJobDescriptionGivenJobId2(2) === Some("Build things for people")
+      )
     }
 
   }
 
   describe("findJobDescriptionGivenJobIdOrElse1") {
 
-    it("should return `does not exist` message if jobId is not in jobsDatabase") {
-      assert(findJobDescriptionGivenJobIdOrElse1(1024) === "Job with id 1024 does not exist")
+    it(
+      "should return `does not exist` message if jobId is not in jobsDatabase"
+    ) {
+      assert(
+        findJobDescriptionGivenJobIdOrElse1(
+          1024
+        ) === "Job with id 1024 does not exist"
+      )
     }
 
     it("should return description for Job with jobId") {
       assert(findJobDescriptionGivenJobIdOrElse1(1) === "Expert in their field")
-      assert(findJobDescriptionGivenJobIdOrElse1(2) === "Build things for people")
+      assert(
+        findJobDescriptionGivenJobIdOrElse1(2) === "Build things for people"
+      )
     }
 
   }
 
   describe("findJobDescriptionGivenJobIdOrElse2") {
 
-    it("should return `does not exist` message if jobId is not in jobsDatabase") {
-      assert(findJobDescriptionGivenJobIdOrElse2(1024) === "Job with id 1024 does not exist")
+    it(
+      "should return `does not exist` message if jobId is not in jobsDatabase"
+    ) {
+      assert(
+        findJobDescriptionGivenJobIdOrElse2(
+          1024
+        ) === "Job with id 1024 does not exist"
+      )
     }
 
     it("should return description for Job with jobId") {
       assert(findJobDescriptionGivenJobIdOrElse2(1) === "Expert in their field")
-      assert(findJobDescriptionGivenJobIdOrElse2(2) === "Build things for people")
+      assert(
+        findJobDescriptionGivenJobIdOrElse2(2) === "Build things for people"
+      )
     }
 
   }
@@ -110,12 +131,18 @@ class OptionExercises2Test extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(findJobByHumanId(1) === None) // Sally
     }
 
-    it("should return None if humanId is found and Human has a job that is not in jobsDatabase") {
+    it(
+      "should return None if humanId is found and Human has a job that is not in jobsDatabase"
+    ) {
       assert(findJobByHumanId(3) === None) // Timmy
     }
 
-    it("should return jobId if humanId is found and Human has a job that is in jobsDatabase") {
-      assert(findJobByHumanId(2) === Some(Job("Teacher", "Expert in their field"))) // Jenny
+    it(
+      "should return jobId if humanId is found and Human has a job that is in jobsDatabase"
+    ) {
+      assert(
+        findJobByHumanId(2) === Some(Job("Teacher", "Expert in their field"))
+      ) // Jenny
     }
 
   }

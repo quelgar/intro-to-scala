@@ -1,7 +1,5 @@
 package introcourse.level06
 
-import introcourse.level06.TryExercises._
-
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -9,7 +7,7 @@ import scala.util.{Failure, Success}
 
 class TryExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   // TODO: Remove this import once you've defined Employee data type in TryExercuses
-  import TryTestTypes._
+  import TryTestTypes.*
 
   describe("parseIntSafe") {
 
@@ -62,7 +60,9 @@ class TryExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
     it("should return Left given Failure") {
 
-      assert(tryToEither(Failure(CustomException("msg"))) === Left(TryError("msg")))
+      assert(
+        tryToEither(Failure(CustomException("msg"))) === Left(TryError("msg"))
+      )
     }
   }
 
@@ -84,15 +84,27 @@ class TryExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should return Left if age is not a number") {
-      assert(mkEmployee("Bob,abc,true") === Left(TryError("""For input string: "abc"""")))
+      assert(
+        mkEmployee("Bob,abc,true") === Left(
+          TryError("""For input string: "abc"""")
+        )
+      )
     }
 
     it("should return Left if hasDirectReports is not a Boolean") {
-      assert(mkEmployee("Bob,22,abc") === Left(TryError("""For input string: "abc"""")))
+      assert(
+        mkEmployee("Bob,22,abc") === Left(
+          TryError("""For input string: "abc"""")
+        )
+      )
     }
 
     it("should return Left if csv does not have 3 fields") {
-      assert(mkEmployee("a,b,c,d") === Left(TryError("CSV has wrong number of fields. Expected 3.")))
+      assert(
+        mkEmployee("a,b,c,d") === Left(
+          TryError("CSV has wrong number of fields. Expected 3.")
+        )
+      )
     }
 
   }
@@ -102,12 +114,15 @@ class TryExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     it("should return first error if any") {
       val errorOrEmployees = fileToEmployees("src/main/resources/employees.csv")
 
-      assert(errorOrEmployees == List(
-        Right(Employee("ophelia", 25, false)),
-        Right(Employee("romeo", 30, false)),
-        Right(Employee("juliet", 29, true)),
-        Left(TryError("""For input string: "xx"""")),
-        Left(TryError("""For input string: "yes""""))))
+      assert(
+        errorOrEmployees == List(
+          Right(Employee("ophelia", 25, false)),
+          Right(Employee("romeo", 30, false)),
+          Right(Employee("juliet", 29, true)),
+          Left(TryError("""For input string: "xx"""")),
+          Left(TryError("""For input string: "yes""""))
+        )
+      )
     }
 
   }

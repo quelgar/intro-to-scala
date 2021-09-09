@@ -1,6 +1,5 @@
 package introcourse.level02
 
-import introcourse.level02.TypesExercises._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -38,7 +37,9 @@ class TypesExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       val updatedPerson = changeAge(60, person)
 
       assert(updatedPerson === Person("Bob", 60))
-      assert(person === Person("Bob", 50)) // assertion is unnecessary, but shows immutability
+      assert(
+        person === Person("Bob", 50)
+      ) // assertion is unnecessary, but shows immutability
     }
 
   }
@@ -101,19 +102,19 @@ class TypesExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("showTrafficLight") {
 
     it("should show Red") {
-      val str = showTrafficLight(Red)
+      val str = showTrafficLight(TrafficLight.Red)
 
       assert(str === "The traffic light is red")
     }
 
     it("should show Yellow") {
-      val str = showTrafficLight(Yellow)
+      val str = showTrafficLight(TrafficLight.Yellow)
 
       assert(str === "The traffic light is yellow")
     }
 
     it("should show Green") {
-      val str = showTrafficLight(Green)
+      val str = showTrafficLight(TrafficLight.Green)
 
       assert(str === "The traffic light is green")
     }
@@ -123,6 +124,5 @@ class TypesExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
   }
-
 
 }

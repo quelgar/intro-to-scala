@@ -1,6 +1,5 @@
 package introcourse.level04
 
-import introcourse.level04.OptionExercises1._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -25,15 +24,15 @@ class OptionExercises1Test extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should return Red") {
-      assert(mkTrafficLight("red") === Some(Red))
+      assert(mkTrafficLight("red") === Some(TrafficLight.Red))
     }
 
     it("should return Yellow") {
-      assert(mkTrafficLight("yellow") === Some(Yellow))
+      assert(mkTrafficLight("yellow") === Some(TrafficLight.Yellow))
     }
 
     it("should return Green") {
-      assert(mkTrafficLight("green") === Some(Green))
+      assert(mkTrafficLight("green") === Some(TrafficLight.Green))
     }
 
   }
@@ -69,7 +68,9 @@ class OptionExercises1Test extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("mkPersonThenChangeName") {
 
     it("should return Person with name set to newName") {
-      assert(mkPersonThenChangeName("Bob", 20, "John") === Some(Person("John", 20)))
+      assert(
+        mkPersonThenChangeName("Bob", 20, "John") === Some(Person("John", 20))
+      )
     }
 
     it("should return None if oldName is blank") {

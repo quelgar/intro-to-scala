@@ -1,10 +1,13 @@
 package introcourse.level01
 
-import introcourse.level01.IntroExercises._
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-class IntroExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
+class IntroExercisesTest
+    extends AnyFunSpec
+    with TypeCheckedTripleEquals
+    with Matchers {
 
   describe("add") {
 
@@ -42,7 +45,9 @@ class IntroExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
   describe("foo") {
 
-    it("can only return the parameter unmodified (aka the 'identity' function)") {
+    it(
+      "can only return the parameter unmodified (aka the 'identity' function)"
+    ) {
       assert(foo(1) === 1)
     }
 
@@ -51,7 +56,7 @@ class IntroExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("bar") {
 
     it("can be any Int") {
-      assert(bar(1).isInstanceOf[Int])
+      "assert(bar(1).isInstanceOf[Int]" shouldNot compile
     }
 
   }

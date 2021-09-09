@@ -1,6 +1,6 @@
 package introcourse.level05
 
-import introcourse.level05.ExceptionExercises._
+import introcourse.level05.ExceptionExercises.*
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
 
@@ -28,7 +28,9 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(getAge("20") === 20)
     }
 
-    it("should throw an InvalidAgeValueException if the age supplied is not an Int") {
+    it(
+      "should throw an InvalidAgeValueException if the age supplied is not an Int"
+    ) {
       val caught = intercept[InvalidAgeValueException] {
         getAge("Fred")
       }
@@ -36,7 +38,9 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(caught.getMessage === "provided age is invalid: Fred")
     }
 
-    it("should throw an InvalidAgeRangeException if the age supplied is lower than range 1-120") {
+    it(
+      "should throw an InvalidAgeRangeException if the age supplied is lower than range 1-120"
+    ) {
       val caught = intercept[InvalidAgeRangeException] {
         getAge("0")
       }
@@ -45,14 +49,16 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should accept an age of one") {
-      assert(getAge("1")   == 1)
+      assert(getAge("1") == 1)
     }
 
     it("should accept an age of a hundred and twenty") {
-      assert(getAge("120")   == 120)
+      assert(getAge("120") == 120)
     }
 
-    it("should throw an InvalidAgeRangeException if the age supplied is higher than range 1-120") {
+    it(
+      "should throw an InvalidAgeRangeException if the age supplied is higher than range 1-120"
+    ) {
       val caught = intercept[InvalidAgeRangeException] {
         getAge("121")
       }
@@ -75,7 +81,9 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(caught.getMessage === "provided name is empty")
     }
 
-    it("should throw an InvalidAgeValueException if the age supplied is not an Int") {
+    it(
+      "should throw an InvalidAgeValueException if the age supplied is not an Int"
+    ) {
       val caught = intercept[InvalidAgeValueException] {
         createPerson("Fred", "ThirtyTwo")
       }
@@ -83,7 +91,9 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(caught.getMessage === "provided age is invalid: ThirtyTwo")
     }
 
-    it("should throw an InvalidAgeRangeException if the age supplied is not between 1 and 120") {
+    it(
+      "should throw an InvalidAgeRangeException if the age supplied is not between 1 and 120"
+    ) {
       val caught = intercept[InvalidAgeRangeException] {
         createPerson("Fred", "150")
       }
@@ -95,7 +105,9 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("createValidPeople") {
 
     it("should return a List of Person instances") {
-      assert(createValidPeople === List(Person("Tokyo", 30), Person("Berlin", 43)))
+      assert(
+        createValidPeople === List(Person("Tokyo", 30), Person("Berlin", 43))
+      )
     }
   }
 
@@ -113,8 +125,8 @@ class ExceptionExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
     it("should return a List Exceptions thrown while processing inputs") {
       assert(collectErrors.size === expectedErrors.size)
-      collectErrors.zip(expectedErrors).foreach {
-        case (e1, e2) => assert(exceptionEq(e1, e2), s"$e1 != $e2")
+      collectErrors.zip(expectedErrors).foreach { case (e1, e2) =>
+        assert(exceptionEq(e1, e2), s"$e1 != $e2")
       }
     }
   }

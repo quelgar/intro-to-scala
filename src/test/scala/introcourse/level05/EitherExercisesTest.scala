@@ -1,8 +1,9 @@
 package introcourse.level05
 
-import introcourse.level05.EitherExercises._
+import introcourse.level05.EitherExercises.*
 import org.scalactic.TypeCheckedTripleEquals
 import org.scalatest.funspec.AnyFunSpec
+import AppError.*
 
 class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
 
@@ -28,7 +29,9 @@ class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
       assert(getAge("Fred") === Left(InvalidAgeValue("Fred")))
     }
 
-    it("should return an InvalidAgeRange if the age supplied is not between 1 and 120") {
+    it(
+      "should return an InvalidAgeRange if the age supplied is not between 1 and 120"
+    ) {
       assert(getAge("-1") === Left(InvalidAgeRange(-1)))
     }
 
@@ -57,10 +60,14 @@ class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should return an InvalidAgeValue if the age supplied is not an Int") {
-      assert(createPerson("Fred", "ThirtyTwo") === Left(InvalidAgeValue("ThirtyTwo")))
+      assert(
+        createPerson("Fred", "ThirtyTwo") === Left(InvalidAgeValue("ThirtyTwo"))
+      )
     }
 
-    it("should return an InvalidAgeRange if the age supplied is not between 1 and 120") {
+    it(
+      "should return an InvalidAgeRange if the age supplied is not between 1 and 120"
+    ) {
       assert(createPerson("Fred", "150") === Left(InvalidAgeRange(150)))
     }
   }
@@ -76,10 +83,16 @@ class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should return an InvalidAgeValue if the age supplied is not an Int") {
-      assert(createPerson2("Fred", "ThirtyTwo") === Left(InvalidAgeValue("ThirtyTwo")))
+      assert(
+        createPerson2("Fred", "ThirtyTwo") === Left(
+          InvalidAgeValue("ThirtyTwo")
+        )
+      )
     }
 
-    it("should return an InvalidAgeRange if the age supplied is not between 1 and 120") {
+    it(
+      "should return an InvalidAgeRange if the age supplied is not between 1 and 120"
+    ) {
       assert(createPerson2("Fred", "150") === Left(InvalidAgeRange(150)))
     }
   }
@@ -95,11 +108,21 @@ class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should show an invalid age value") {
-      assert(createPersonAndShow("Fred", "ThirtyTwo") === "Invalid age value supplied: ThirtyTwo")
+      assert(
+        createPersonAndShow(
+          "Fred",
+          "ThirtyTwo"
+        ) === "Invalid age value supplied: ThirtyTwo"
+      )
     }
 
     it("should show an invalid age range") {
-      assert(createPersonAndShow("Fred", "150") === "Provided age must be between 1-120: 150")
+      assert(
+        createPersonAndShow(
+          "Fred",
+          "150"
+        ) === "Provided age must be between 1-120: 150"
+      )
     }
 
   }
@@ -115,7 +138,11 @@ class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
     }
 
     it("should show an invalid age value") {
-      assert(makeNameUpperCase("Fred", "ThirtyTwo") === Left(InvalidAgeValue("ThirtyTwo")))
+      assert(
+        makeNameUpperCase("Fred", "ThirtyTwo") === Left(
+          InvalidAgeValue("ThirtyTwo")
+        )
+      )
     }
 
     it("should show an invalid age range") {
@@ -126,17 +153,23 @@ class EitherExercisesTest extends AnyFunSpec with TypeCheckedTripleEquals {
   describe("createValidPeople") {
 
     it("should return a List Person instances") {
-      assert(createValidPeople === List(Person("Tokyo", 30), Person("Berlin", 43)))
+      assert(
+        createValidPeople === List(Person("Tokyo", 30), Person("Berlin", 43))
+      )
     }
   }
 
   describe("collectErrors") {
 
     it("should return a List of errors returned while processing inputs") {
-      assert(collectErrors === List(InvalidAgeValue("5o"),
-                                    InvalidAgeRange(200),
-                                    InvalidAgeRange(0),
-                                    EmptyName))
+      assert(
+        collectErrors === List(
+          InvalidAgeValue("5o"),
+          InvalidAgeRange(200),
+          InvalidAgeRange(0),
+          EmptyName
+        )
+      )
     }
   }
 }
